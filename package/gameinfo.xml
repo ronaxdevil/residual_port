@@ -1,0 +1,13 @@
+<gameList>
+  <game>
+    <path>./Residual.sh</path>
+    <name>Residual</name>
+    <desc>Explore alien planets, gather resources and repair your ship in this procedurally generated survival platformer by Orangepixel.</desc>
+    <developer>Orangepixel</developer>
+    <genre>action, platformer</genre>
+    <image>./residual/screenshot.png</image>
+    <releasedate>20210909T000000</releasedate>
+    <publisher>THQ Nordic Mobile GmbH</publisher>
+    <players>1</players>
+  </game>
+</gameList>

@@ -1,0 +1,43 @@
+{
+  "version": 4,
+  "name": "residual.zip",
+  "items": [
+    "Residual.sh",
+    "residual"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Residual",
+    "porter": [
+      "ronaxdevil"
+    ],
+    "desc": "Explore alien planets, gather resources and repair your ship in this procedurally generated survival platformer by Orangepixel.",
+    "desc_md": null,
+    "inst": "Install Residual.zip with PortMaster, then copy residual.jar from your GOG Windows 1.4.1 installation into the installed residual folder. On muOS use <SD card>/ports/residual/residual.jar. See the README for the supported checksum and offline-installer instructions. Requires 64-bit ARM firmware; PortMaster provides Java 17 and Westonpack.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "platformer"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "weston_pkg_0.2.squashfs",
+      "zulu17.54.21-ca-jre17.0.13-linux.squashfs"
+    ],
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "2.27",
+    "availability": "paid",
+    "store": [
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/residual",
+        "developerurl": "https://orangepixel.net/"
+      }
+    ]
+  }
+}

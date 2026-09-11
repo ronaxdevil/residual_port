@@ -1,0 +1,13 @@
+build/
+dist/
+package/residual/residual.jar
+package/residual/runtime/*.jar
+package/residual/saves/
+package/residual/cache/
+package/residual/resolution.txt
+package/residual/log.txt
+__pycache__/
+*.pyc
+
+# Generated public PortMaster export
+/ports/

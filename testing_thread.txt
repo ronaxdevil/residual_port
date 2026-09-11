@@ -1,0 +1,56 @@
+Residual - PortMaster testing
+Porter: ronaxdevil
+
+Instructions to install the Testing Zip:
+Drop Residual.zip into the PortMaster autoinstall folder and open PortMaster.
+Keep the device online to download Java 17 and Westonpack if required.
+
+Game Information
+Title: Residual
+URL: https://www.gog.com/en/game/residual
+
+Instructions:
+Own the GOG Windows version 1.4.1. Download its full offline installer and any
+accompanying .bin files from your GOG library, install it on Windows, and copy
+residual.jar from beside residual.exe in the installation directory.
+Put it in the installed residual folder alongside residual.ini.
+On muOS: <SD card>/ports/residual/residual.jar.
+On R36S: <ports directory>/residual/residual.jar.
+The package README includes extraction alternatives and the required checksum.
+Game data is not included. Requires compatible 64-bit ARM firmware.
+
+Controls:
+D-pad / left stick: Move / navigate
+A: Action / confirm
+B: Jump / up
+X: Inventory
+Y: Visor
+L1: Inventory
+R1: Action / confirm
+L2: Visor
+R2: Down / descend
+Start: Pause / back
+Select: Pause / back
+Start + Select: Exit (save through the game first)
+
+CFW Tests:
+[ ] AmberELEC
+[ ] dArkOS / ArkOS (R36S)
+[ ] muOS (RG34XX SP and other supported RGXX devices)
+ROCKNIX
+  [ ] Libmali
+  [ ] Panfrost
+  [ ] Adreno (optional)
+[ ] Knulli
+
+Resolutions:
+[ ] 640x480
+[ ] 720x480
+[ ] 720x720
+[ ] 1024x768
+[ ] 1280x720
+
+Physical handheld tests are pending. Please report device, firmware version,
+display size, menu navigation, gameplay controls, music/sound, game speed,
+save/reload, suspend/resume, and Start + Select exit behavior.
+For a failure, attach residual/log.txt. Do not attach your game JAR or installer.
