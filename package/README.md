@@ -1,6 +1,6 @@
 ## Notes
 
-Thanks to [Orangepixel](https://orangepixel.net/) for Residual and its planet exploration and survival gameplay. PortMaster adaptation by **ronaxdevil**.
+Thanks to [Orangepixel](https://orangepixel.net/) for Residual and its planet exploration and survival gameplay. PortMaster adaptation by **Pixelforge Ports (Ronax)**.
 
 This port runs the original Residual 1.4.1 Windows/GOG game JAR on compatible ARM64 Linux handheld firmware using PortMaster's Java 17 and Westonpack runtimes. The single **Residual.zip** is a bring-your-own-data package. You must own the game; game code and assets are not included.
 
@@ -74,3 +74,12 @@ Keep the game's default keyboard bindings. Use the game's save/quit option befor
 The launcher uses PortMaster's screen dimensions. Scaling handles **640x480**, **720x480**, **720x720**, **1024x768**, **1280x720** and other valid display sizes while preserving aspect ratio. The host caps updates at 60 per second. If automatic sizing is wrong, put `WIDTHxHEIGHT`, for example `720x480`, in `residual/resolution.txt`; use `auto` or remove that file to restore detection.
 
 Saves and settings are kept in `residual/saves/`, temporary files in `residual/cache/`, and startup output in `residual/log.txt`.
+
+## Licenses
+
+The port's original host and support code use the MIT license.
+`LICENSE-residual-host.txt` explicitly covers `residual-host.jar`. The package keeps
+`LICENSE-gptokeyb.txt` for its controller mapper and includes
+the BinaryCounter MIT notice for adapted launcher code within `LICENSE-residual.txt`.
+Residual artwork and the player-supplied game retain their original terms. See the
+files in `residual/licenses/` inside the installed port for component notices.

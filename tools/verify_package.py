@@ -12,6 +12,21 @@ def verify(root):
     root = Path(root)
     assert {p.name for p in (root/'dist').iterdir()} == {'Residual.zip'}
     expected = public_files(root)
+    license_dir = root/'package/residual/licenses'
+    required_licenses = {'LICENSE-residual.txt', 'LICENSE-residual-host.txt', 'LICENSE-gptokeyb.txt', 'NOTICE-residual-assets.txt'}
+    missing = required_licenses - {p.name for p in license_dir.iterdir() if p.is_file()}
+    if missing:
+        raise ValueError('Missing component notices: ' + ', '.join(sorted(missing)))
+    if any(p.is_dir() for p in license_dir.iterdir()):
+        raise ValueError('Keep component license files directly inside residual/licenses')
+    if (root/'LICENSE').read_bytes() != (license_dir/'LICENSE-residual.txt').read_bytes():
+        raise ValueError('Source and packaged port license must match')
+    mapper_license = (license_dir/'LICENSE-gptokeyb.txt').read_text(encoding='utf-8')
+    if 'GNU GENERAL PUBLIC LICENSE' not in mapper_license or 'Version 2' not in mapper_license:
+        raise ValueError('Keep the full upstream gptokeyb2 license in LICENSE-gptokeyb.txt')
+    host_license = (license_dir/'LICENSE-residual-host.txt').read_text(encoding='utf-8')
+    if 'MIT License' not in host_license or 'Component: residual-host.jar' not in host_license:
+        raise ValueError('The host must have its dedicated MIT license notice')
     with zipfile.ZipFile(root/'dist/Residual.zip') as archive:
         assert archive.testzip() is None
         assert len(archive.namelist()) == len(set(archive.namelist())) == len(expected)
@@ -32,7 +47,7 @@ def verify(root):
     assert meta['version'] == 4 and meta['name'] == 'residual.zip'
     assert meta['items'] == ['Residual.sh','residual']
     attr = meta['attr']
-    assert attr['porter'] == ['ronaxdevil']
+    assert attr['porter'] == ['Pixelforge Ports (Ronax)']
     assert attr['rtr'] is False and attr['exp'] is False
     assert attr['arch'] == ['aarch64'] and attr['availability'] == 'paid'
     assert attr['runtime'] == ['weston_pkg_0.2.squashfs','zulu17.54.21-ca-jre17.0.13-linux.squashfs']

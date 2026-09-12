@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Gunslugs PortMaster adaptation contributors
+Copyright (c) 2026 Pixelforge Ports contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-This license covers the original launcher, control mapping, and documentation
-in this package. It does not grant rights to Residual game code, assets, or
-third-party runtimes and libraries, which keep their own licenses.
+Component: residual-host.jar
+Source: src/org/portmaster/residual/
+Port maintained by Pixelforge Ports (Ronax).
+
+This notice applies to the original Residual PortMaster Java adaptation host,
+including Main, DisplayLayout, VerifyGame and generated inner classes compiled
+from that source. The existing copyright attribution above is retained.
+
+This host license does not license residual.jar, the original Residual game,
+its artwork, or third-party runtime and library implementations. The host JAR
+excludes the compile-only game API declarations and downloaded libGDX build
+libraries. Players provide the original game JAR separately.

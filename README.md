@@ -1,6 +1,6 @@
 ## Notes
 
-Thanks to [Orangepixel](https://orangepixel.net/) for Residual and its planet exploration and survival gameplay. PortMaster adaptation by **ronaxdevil**.
+Thanks to [Orangepixel](https://orangepixel.net/) for Residual and its planet exploration and survival gameplay. PortMaster adaptation by **Pixelforge Ports (Ronax)**.
 
 This port runs the original Residual 1.4.1 Windows/GOG game JAR on compatible ARM64 Linux handheld firmware using PortMaster's Java 17 and Westonpack runtimes. The single **Residual.zip** is a bring-your-own-data package. You must own the game; game code and assets are not included.
 
@@ -108,3 +108,14 @@ bash tests/verify_launcher.sh
 Both build modes also verify the archive. `package/` holds the public packaging inputs; `ports/residual/` is the generated PortMaster repository layout. Build intermediates, compiled JARs, saves and `dist/` are ignored by Git. Upload the source files directly to your source repository. The build neither publishes files nor creates additional ZIP variants.
 
 Device test status and desktop evidence are recorded in [VALIDATION.md](VALIDATION.md). The Discord testing post is [testing_thread.txt](testing_thread.txt).
+
+## Licenses
+
+The port's original host and support code use the MIT license.
+`LICENSE-residual-host.txt` explicitly covers `residual-host.jar`. The package keeps
+`LICENSE-gptokeyb.txt` for its controller mapper and includes
+the BinaryCounter MIT notice for adapted launcher code within `LICENSE-residual.txt`.
+Residual artwork and the player-supplied game retain their original terms. See the
+files in `residual/licenses/` inside the installed port for component notices.
+
+See [the license inventory](docs/licenses.md) for source and runtime details.

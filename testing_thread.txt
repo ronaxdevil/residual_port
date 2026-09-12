@@ -1,8 +1,9 @@
 Residual - PortMaster testing
-Porter: ronaxdevil
+Porter: Pixelforge Ports (Ronax)
 
 Instructions to install the Testing Zip:
 Drop Residual.zip into the PortMaster autoinstall folder and open PortMaster.
+Or Run via SSH: harbourmaster install “zip url from discord”
 Keep the device online to download Java 17 and Westonpack if required.
 
 Game Information
@@ -10,12 +11,11 @@ Title: Residual
 URL: https://www.gog.com/en/game/residual
 
 Instructions:
-Own the GOG Windows version 1.4.1. Download its full offline installer and any
-accompanying .bin files from your GOG library, install it on Windows, and copy
-residual.jar from beside residual.exe in the installation directory.
+Own the GOG Windows version 1.4.1. Download its full offline installerfrom 
+your GOG library, install it on Windows, and copy residual.jar from beside 
+residual.exe in the installation directory.
 Put it in the installed residual folder alongside residual.ini.
-On muOS: <SD card>/ports/residual/residual.jar.
-On R36S: <ports directory>/residual/residual.jar.
+Directory: <ports directory>/residual/residual.jar.
 The package README includes extraction alternatives and the required checksum.
 Game data is not included. Requires compatible 64-bit ARM firmware.
 
@@ -50,7 +50,7 @@ Resolutions:
 [ ] 1024x768
 [ ] 1280x720
 
-Physical handheld tests are pending. Please report device, firmware version,
+Physical handheld tests are pending other then Rg34xxsp. Please report device, firmware version,
 display size, menu navigation, gameplay controls, music/sound, game speed,
 save/reload, suspend/resume, and Start + Select exit behavior.
 For a failure, attach residual/log.txt. Do not attach your game JAR or installer.
