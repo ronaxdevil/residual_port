@@ -35,7 +35,7 @@ Use the path reported by `find` if it differs from the example. Keep any install
 
 ## Install Residual.zip
 
-1. Update PortMaster on your handheld. Use compatible **64-bit ARM firmware**, such as muOS on supported Anbernic RGXX devices or a compatible R36S firmware. PortMaster provisions Java 17 and Westonpack; keep the device online for the initial runtime download.
+1. Update PortMaster on your handheld. Use compatible **64-bit ARM firmware**, such as muOS on supported Anbernic RGXX devices or a compatible firmware. PortMaster provisions Java 17 and Westonpack; keep the device online for the initial runtime download.
 2. Copy **Residual.zip** into your PortMaster installation's `autoinstall` folder, then open PortMaster to install it. This is the same ZIP for every supported device and resolution.
 3. Copy your verified **residual.jar** into the installed **residual** data folder, alongside `display.inc` and `residual.ini`, not into `runtime`.
 4. Refresh the firmware's games list if necessary and launch **Residual** from Ports.
@@ -45,7 +45,7 @@ Typical final data locations:
 | Firmware | Required game file |
 | --- | --- |
 | muOS | `<SD card>/ports/residual/residual.jar` |
-| R36S / ArkOS-style layout | `<ports directory>/residual/residual.jar` |
+| ArkOS-style layout | `<ports directory>/residual/residual.jar` |
 | Other PortMaster firmware | The installed `residual` folder inside its ports directory |
 
 For manual installation, extract the ZIP into the firmware's ports directory so `Residual.sh` sits beside `residual/`. On muOS, put `Residual.sh` in `<SD card>/roms/PORTS/` and the `residual` folder in `<SD card>/ports/` on the same card. Preserve `residual/saves/` when updating. Linux filenames are case-sensitive: use lowercase **residual.jar**.
@@ -63,7 +63,7 @@ For manual installation, extract the ZIP into the firmware's ports directory so 
 | R1 | Action / confirm |
 | L2 | Visor |
 | R2 | Down / descend |
-| Start | Pause / back |
+| Start | O / options |
 | Select | Pause / back |
 | Start + Select | PortMaster exit shortcut |
 
@@ -74,7 +74,3 @@ Keep the game's default keyboard bindings. Use the game's save/quit option befor
 The launcher uses PortMaster's screen dimensions. Scaling handles **640x480**, **720x480**, **720x720**, **1024x768**, **1280x720** and other valid display sizes while preserving aspect ratio. The host caps updates at 60 per second. If automatic sizing is wrong, put `WIDTHxHEIGHT`, for example `720x480`, in `residual/resolution.txt`; use `auto` or remove that file to restore detection.
 
 Saves and settings are kept in `residual/saves/`, temporary files in `residual/cache/`, and startup output in `residual/log.txt`.
-
-## Compile
-
-Build from this port's source checkout using Python 3.9+ and JDK 17+: `python tools/build.py --game-jar /path/to/residual.jar --jdk /path/to/jdk-17`. See the source README for dependencies, Windows commands and verification steps. Output: `dist/Residual.zip`.

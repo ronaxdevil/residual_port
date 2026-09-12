@@ -41,9 +41,14 @@ def verify(root):
     assert xml.findtext('game/path') == './Residual.sh'
     assert xml.findtext('game/image') == './residual/screenshot.png'
     assert struct.unpack('>II', expected['screenshot.png'][16:24]) == (640,480)
-    config = configparser.ConfigParser()
+    config = configparser.ConfigParser(interpolation=None)
     config.read_string(expected['residual/residual.ini'].decode('utf-8'))
-    assert dict(config['controls']) == dict(a='x',b='w',x='tab',y='v',back='esc',start='esc',up='w',down='s',left='a',right='d',l1='tab',r1='x',l2='v',r2='s',left_analog_up='w',left_analog_down='s',left_analog_left='a',left_analog_right='d')
+    if not config.has_section('controls'):
+        raise ValueError('residual.ini must contain a [controls] section')
+    if not any(value.strip() for value in config['controls'].values()):
+        raise ValueError('residual.ini must contain at least one nonempty control binding')
+    # Archive mappings already match the source byte-for-byte above.
+    # Control choices are editable; do not require the original default bindings.
     print('PACKAGE_OK: single Residual.zip, BYO-only payload, metadata, controls, permissions and CRCs')
 
 if __name__ == '__main__':

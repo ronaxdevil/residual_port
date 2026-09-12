@@ -56,3 +56,13 @@ The inspected input is an installed GOG Windows 1.4.1 directory, game ID
 1688702977, build ID 59032447871207888. No offline installer was supplied;
 the README's installer and innoextract steps have not been exercised against
 that installer. The build and launcher enforce the inspected JAR's SHA-256.
+
+## Build without game data
+
+On 2026-09-12 the host was compiled using only the handwritten compile-api
+declarations and checksum-pinned public libGDX 1.13.1 dependencies. No original
+game JAR is read by this build unless the optional fingerprint check is requested.
+All four distributed host class files matched a reference build compiled against
+the original game classes byte-for-byte. The package verifier confirms that no
+compile-only declarations, library dependencies or original game data are shipped.
+Game-dependent gameplay tests still require the owned game JAR.

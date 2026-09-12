@@ -29,14 +29,14 @@ L1: Inventory
 R1: Action / confirm
 L2: Visor
 R2: Down / descend
-Start: Pause / back
+Start: O / Options
 Select: Pause / back
 Start + Select: Exit (save through the game first)
 
 CFW Tests:
 [ ] AmberELEC
 [ ] dArkOS / ArkOS (R36S)
-[ ] muOS (RG34XX SP and other supported RGXX devices)
+[x] muOS (RG34XX SP and other supported RGXX devices)
 ROCKNIX
   [ ] Libmali
   [ ] Panfrost
@@ -44,8 +44,8 @@ ROCKNIX
 [ ] Knulli
 
 Resolutions:
-[ ] 640x480
-[ ] 720x480
+[x] 640x480
+[x] 720x480
 [ ] 720x720
 [ ] 1024x768
 [ ] 1280x720

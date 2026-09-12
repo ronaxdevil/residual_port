@@ -1,6 +1,6 @@
 # Residual default keyboard bindings: WASD, X, Escape, Tab, V.
 back = esc
-start = esc
+start = o
 a = x
 b = w
 x = tab

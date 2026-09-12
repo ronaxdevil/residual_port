@@ -63,7 +63,7 @@ For manual installation, extract the ZIP into the firmware's ports directory so 
 | R1 | Action / confirm |
 | L2 | Visor |
 | R2 | Down / descend |
-| Start | Pause / back |
+| Start | O / Options |
 | Select | Pause / back |
 | Start + Select | PortMaster exit shortcut |
 
@@ -77,21 +77,23 @@ Saves and settings are kept in `residual/saves/`, temporary files in `residual/c
 
 ## Compile
 
-Install **Python 3.9 or newer** and a **JDK 17 or newer**, then download or clone this source and open a terminal at its root (the folder containing `src`, `tools` and `package`). Obtain the supported original JAR using the GOG instructions above. No cross compiler, Maven, Gradle or downloaded build dependencies are needed.
+Install **Python 3.9 or newer** and a **JDK 17 or newer**, then download or clone this source and open a terminal at its root (the folder containing `src`, `tools` and `package`). The original game JAR is not needed to compile or package the port. The first full build downloads two open-source libGDX 1.13.1 JARs from Maven Central and checks their pinned SHA-256 hashes. No cross compiler, Maven or Gradle installation is needed.
 
 Windows PowerShell:
 
 ```powershell
-python tools/build.py --game-jar 'C:\GOG Games\Residual\residual.jar' --jdk 'C:\Program Files\Java\jdk-17'
+python tools/build.py --jdk 'C:\Program Files\Java\jdk-17'
 ```
 
-Linux (replace paths with your JAR and installed JDK):
+Linux (replace the path with your installed JDK):
 
 ```sh
-python3 tools/build.py --game-jar /path/to/residual.jar --jdk /path/to/jdk-17
+python3 tools/build.py --jdk /path/to/jdk-17
 ```
 
-The build compiles the adaptation from `src/` and produces only **`dist/Residual.zip`**. The original JAR is read for compilation and never copied into the public package. Java bytecode is architecture-independent; the supplied game natives and runtime target ARM64. A build on Windows can therefore produce the same handheld package as a build on Linux.
+The build compiles the adaptation from `src/` and produces only **`dist/Residual.zip`**. Small compile-only API declarations in `compile-api/` describe the game classes used by the host. They contain no game implementation and are excluded from the host and ZIP, as are the downloaded build dependencies. At runtime the real game classes come from the player's own `residual.jar`. Java bytecode is architecture-independent; the supplied game natives and runtime target ARM64. A build on Windows can therefore produce the same handheld package as a build on Linux.
+
+After the first full build, `python tools/build.py --jdk /path/to/jdk-17 --offline` rebuilds using the cached dependencies in `build/dependencies/`. A fresh offline build needs both checksum-matching dependency JARs placed there first. The optional `--game-jar` argument only checks a supplied game file's fingerprint; it is never used as the compiler classpath.
 
 After changing only the launcher, mappings or documentation, reuse the compiled host:
 

@@ -4,7 +4,6 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.backends.lwjgl3.*;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.glutils.HdpiMode;
-import com.orangepixel.residual.Globals;
 import com.orangepixel.residual.myCanvas;
 import com.orangepixel.plugins.Social;
 import java.lang.reflect.*;
