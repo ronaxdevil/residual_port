@@ -11,3 +11,14 @@ __pycache__/
 
 # Generated public PortMaster export
 /ports/
+
+# Generated/private content
+ports/
+build/
+dist/
+package/residual/residual.jar
+package/residual/runtime/*-host.jar
+package/residual/saves/
+package/residual/cache/
+package/residual/log.txt
+package/residual/resolution.txt

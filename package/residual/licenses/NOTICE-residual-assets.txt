@@ -1,13 +1,4 @@
-Residual game and artwork notice
-
-Residual is developed by Orangepixel. The bundled screenshot depicts the original
-game and retains the rights of its respective copyright holders. It is not covered
-by the port's MIT license. This notice does not grant permission to redistribute
-the game or its artwork.
-
-The BYO-data ZIP excludes residual.jar and the original game's executable code and
-playable assets. Players supply their own supported game JAR. Its embedded
-third-party notices remain intact; this port neither replaces nor relicenses them.
-
-Game: https://www.gog.com/en/game/residual
-Developer: https://orangepixel.net/
+Residual game code, artwork, screenshots and trademarks belong to Orangepixel
+and their respective rights holders. The screenshot is an actual game capture.
+No game archive or commercial asset files are included. The port's MIT license
+does not grant a license to the game or its artwork.

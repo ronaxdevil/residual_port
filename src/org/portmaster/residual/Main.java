@@ -14,6 +14,8 @@ public class Main extends myCanvas {
     public final DisplayLayout layout = new DisplayLayout();
     protected Graphics physicalGraphics;
     private GL20 physicalGl;
+    private GL20 bridgeGl;
+    private Graphics bridgeGraphics;
     private Application physicalApp;
     private boolean ready;
     private long lastFrame;
@@ -78,11 +80,13 @@ public class Main extends myCanvas {
 
     @Override public void resize(int width,int height) {
         if (!ready || width < 160 || height < 160) return;
+        restoreDisplayBridge();
         layout.resize(width,height);
         super.resize(layout.gameWidth,layout.gameHeight);
         System.out.println("GAME_RESIZE_OK " + width + "x" + height + " view=" + layout.gameWidth + "x" + layout.gameHeight);
     }
     @Override public void render() {
+        restoreDisplayBridge();
         // Match this Windows build's original 60 FPS cap.
         long now = System.nanoTime();
         while (lastFrame != 0 && now - lastFrame < 16666667L) {
@@ -94,6 +98,8 @@ public class Main extends myCanvas {
         physicalGl.glDisable(GL20.GL_SCISSOR_TEST);
         physicalGl.glClearColor(0,0,0,1); physicalGl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         super.render();
+        Gdx.gl20.glBindFramebuffer(GL20.GL_FRAMEBUFFER,0);
+        Gdx.gl20.glViewport(0,0,layout.gameWidth,layout.gameHeight);
         frames++;
         int smoke = Integer.getInteger("residual.smokeFrames",0);
         if (smoke > 0 && frames >= smoke) {
@@ -120,6 +126,9 @@ public class Main extends myCanvas {
         try { return method.invoke(target,args); }
         catch (InvocationTargetException e) { throw e.getCause(); }
     }
+    private void restoreDisplayBridge() {
+        if (bridgeGraphics != null) { Gdx.graphics = bridgeGraphics; Gdx.gl = bridgeGl; Gdx.gl20 = bridgeGl; }
+    }
     private void installDisplayBridge() {
         final int[] framebuffer = {0};
         GL20 gl = (GL20)Proxy.newProxyInstance(Main.class.getClassLoader(),new Class<?>[]{GL20.class},(self,method,args)-> {
@@ -142,6 +151,7 @@ public class Main extends myCanvas {
                 default: return delegate(physicalGraphics,method,args);
             }
         });
+        bridgeGl = gl; bridgeGraphics = Gdx.graphics;
         final Application originalApp = Gdx.app;
         Gdx.app = (Application)Proxy.newProxyInstance(Main.class.getClassLoader(),new Class<?>[]{Application.class},(self,method,args)-> {
             if (method.getName().equals("getGraphics")) return Gdx.graphics;

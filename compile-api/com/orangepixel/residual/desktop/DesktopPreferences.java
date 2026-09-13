@@ -1,4 +1,4 @@
-// Compile-only API declaration. Excluded from the distributed host.
+// Compile-only API declaration. Not included in the runtime host.
 package com.orangepixel.residual.desktop;
 
 public class DesktopPreferences implements com.orangepixel.plugins.OrangePreferences {

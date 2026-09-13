@@ -1,85 +1,109 @@
 ## Notes
 
-Thanks to [Orangepixel](https://orangepixel.net/) for Residual and its planet exploration and survival gameplay. PortMaster adaptation by **Pixelforge Ports (Ronax)**.
+Thanks to [Orangepixel](https://orangepixel.net/) for creating **Residual**. Explore alien planets, gather resources and repair your ship in a procedurally generated survival platformer.
 
-This port runs the original Residual 1.4.1 Windows/GOG game JAR on compatible ARM64 Linux handheld firmware using PortMaster's Java 17 and Westonpack runtimes. The single **Residual.zip** is a bring-your-own-data package. You must own the game; game code and assets are not included.
+Porter: **Pixelforge ports (Ronax)**.
+
+This universal **Residual.zip** is a bring-your-own-data PortMaster package for compatible
+**64-bit ARM Linux firmware**. Supply the owned game files below. PortMaster provides Java 17
+and Westonpack. Device testing is requested for muOS on RG34XX SP and other RGXX models,
+R36S with compatible firmware, and other ARM64 handhelds. A device name alone does not guarantee
+a compatible 64-bit userspace or graphics driver.
 
 ## Get residual.jar from GOG
 
-1. Open [Residual on GOG](https://www.gog.com/en/game/residual) in your owned games library and download the **Windows offline backup installer for version 1.4.1**. Download its accompanying `.bin` parts too, if listed, and keep them beside the installer `.exe`. Use the full game installer, not a patch or GOG Galaxy installer.
-2. On Windows, run that offline installer and choose an installation folder, for example `C:\GOG Games\Residual`. Galaxy is not required.
-3. Open the installation folder and copy the **residual.jar** beside `residual.exe`. Keep the JAR intact; do not unpack it or rename an EXE to JAR. The Windows runtime and other installed files are not needed on the handheld.
-4. Verify the file before copying it to the handheld. The supported JAR is **83,168,018 bytes**, with SHA-256:
+1. Open [Residual on GOG](https://www.gog.com/en/game/residual) in your owned library and download the **full Windows offline backup installer** for the supported build (1.4.1). Download every accompanying `.bin` part, if listed, and keep them beside the `.exe`. Use the full installer, not a patch or the Galaxy installer.
+2. Run the installer on Windows and open the installed game directory. Find `residual.jar` beside the game executable. Enable file extensions in Explorer so its name is visible.
+3. Copy that file unchanged into the installed port at `<ports directory>/residual/residual.jar`. Keep its exact name, capitalization and spaces. The Windows EXE and bundled Windows Java runtime are not needed.
+
+Alternatively, extract your full offline installer using [innoextract](https://constexpr.org/innoextract/).
+Run `innoextract -d extracted "your-full-offline-installer.exe"`, then locate `residual.jar`
+inside the extracted files (usually `extracted/app/`) and copy it to the same destination.
+Installer layouts vary; use Windows installation if your extractor cannot read that installer.
+Do not unpack or rename the game archive itself.
+
+No game-data conversion is required on a PC or handheld. The handheld verifies the supplied
+archive and creates its save folders. It cannot generate the purchased game data from nothing.
+
+Supported archive SHA-256 (`residual.jar`):
 
 ```text
 8f8caa7dc36f5ab9c7119046ccce87e3f7a2d61680dc60970fa3d2b2d619ee01
 ```
 
-Windows PowerShell:
+Compare it with `Get-FileHash -Algorithm SHA256 "residual.jar"` in PowerShell,
+or `sha256sum "residual.jar"` on Linux. A different build needs a compatibility check.
 
-```powershell
-Get-FileHash -Algorithm SHA256 -LiteralPath 'C:\GOG Games\Residual\residual.jar'
-```
+## Installation
 
-The inspected installation has GOG game ID `1688702977` and build ID `59032447871207888`. GOG may change download filenames or available versions; the JAR checksum, rather than a guessed installer filename, identifies this supported build. A different checksum requires compatibility verification.
+1. Update PortMaster. Put **Residual.zip** in PortMaster's `autoinstall/` directory, then open PortMaster to install it. Connect to the network to download Java 17 and Westonpack if they are not installed yet.
+2. Copy the owned file to **`<ports directory>/residual/residual.jar`**.
+3. Launch **Residual** from your firmware's ports menu.
 
-On Linux, [innoextract](https://constexpr.org/innoextract/) can unpack supported GOG offline installers without running Windows. Install it through your distribution, then use the actual downloaded installer filename:
+For manual installation on **muOS**, extract the ZIP on your computer and copy `Residual.sh`
+to `<SD card>/roms/PORTS/`, and the `residual/` folder to `<SD card>/ports/` on the card
+configured as the firmware's ports location. The required file is
+**`<SD card>/ports/residual/residual.jar`**.
 
-```sh
-innoextract --extract --output-dir residual-extracted "setup_residual_YOUR_VERSION.exe"
-find residual-extracted -type f -iname residual.jar
-sha256sum "residual-extracted/app/residual.jar"
-```
-
-Use the path reported by `find` if it differs from the example. Keep any installer `.bin` parts together. If innoextract does not support the installer, use the Windows installation method. The inspected input was an installed game directory; extraction from an offline installer has not been tested for this port.
-
-## Install Residual.zip
-
-1. Update PortMaster on your handheld. Use compatible **64-bit ARM firmware**, such as muOS on supported Anbernic RGXX devices or a compatible firmware. PortMaster provisions Java 17 and Westonpack; keep the device online for the initial runtime download.
-2. Copy **Residual.zip** into your PortMaster installation's `autoinstall` folder, then open PortMaster to install it. This is the same ZIP for every supported device and resolution.
-3. Copy your verified **residual.jar** into the installed **residual** data folder, alongside `display.inc` and `residual.ini`, not into `runtime`.
-4. Refresh the firmware's games list if necessary and launch **Residual** from Ports.
-
-Typical final data locations:
-
-| Firmware | Required game file |
-| --- | --- |
-| muOS | `<SD card>/ports/residual/residual.jar` |
-| ArkOS-style layout | `<ports directory>/residual/residual.jar` |
-| Other PortMaster firmware | The installed `residual` folder inside its ports directory |
-
-For manual installation, extract the ZIP into the firmware's ports directory so `Residual.sh` sits beside `residual/`. On muOS, put `Residual.sh` in `<SD card>/roms/PORTS/` and the `residual` folder in `<SD card>/ports/` on the same card. Preserve `residual/saves/` when updating. Linux filenames are case-sensitive: use lowercase **residual.jar**.
+For **ArkOS/dArkOS and standard ports layouts**, extract the ZIP into your configured
+ports directory (for example `/roms/ports/` or `/roms2/ports/`) so `Residual.sh` and
+`residual/` are beside each other. Use the firmware's configured ports location; the launcher
+uses PortMaster's `directory` value. Avoid creating an extra `Residual/` wrapper folder.
 
 ## Controls
 
-| Button | Action |
-| --- | --- |
-| D-pad / left stick | Move and navigate |
-| A | Action / confirm |
-| B | Jump / up |
-| X | Inventory |
-| Y | Visor |
-| L1 | Inventory |
-| R1 | Action / confirm |
-| L2 | Visor |
-| R2 | Down / descend |
-| Start | O / options |
-| Select | Pause / back |
-| Start + Select | PortMaster exit shortcut |
+| Control | Keyboard input / action |
+|---|---|
+| D-pad up | W |
+| D-pad down | S |
+| D-pad left | A |
+| D-pad right | D |
+| A | X / Action / confirm |
+| B | W |
+| X | TAB |
+| Y | V |
+| L1 | TAB |
+| R1 | X / Action / confirm |
+| L2 | V |
+| R2 | S |
+| Start (hold) | Hotkey modifier |
+| Start + X | Delete in the save-slot menu |
+| Start + Y | O / Options |
+| Select | ESC / Back / pause |
+| Left stick | Same directions as the D-pad |
+| Select + Start | Exit; save through the game first |
 
-Keep the game's default keyboard bindings. Use the game's save/quit option before exiting to retain planet progress.
+Use the game's default keyboard bindings. Hold Start and press Y for options. Hold Start and press X in the save-slot menu to send Delete; follow the game's deletion prompt for the selected slot. Start alone sends no game key. Select + Start remains the exit shortcut.
 
-## Display and saves
+## Controller support
 
-The launcher uses PortMaster's screen dimensions. Scaling handles **640x480**, **720x480**, **720x720**, **1024x768**, **1280x720** and other valid display sizes while preserving aspect ratio. The host caps updates at 60 per second. If automatic sizing is wrong, put `WIDTHxHEIGHT`, for example `720x480`, in `residual/resolution.txt`; use `auto` or remove that file to restore detection.
+All input is supplied through PortMaster's gptokeyb2 and the shipped `.ini` mapping.
+Update PortMaster before installing. Native Xbox 360 emulation is not enabled in this
+host: its native controller path is disabled. The mapper's `-x` mode replaces keyboard
+and mouse output and requires a working native controller backend in the game.
+Do not add `-x` to this launcher; it would bypass the controls listed above.
 
-Saves and settings are kept in `residual/saves/`, temporary files in `residual/cache/`, and startup output in `residual/log.txt`.
+## Display
+
+The display helper accepts 640x480, 720x480, 720x720, 1024x768 and 1280x720, and other
+valid dimensions supplied by PortMaster. The host preserves the game view's aspect ratio;
+black borders may appear. This includes RG35XX/RG40XX/R36S, RG34XX/SP, CubeXX, TrimUI Brick
+and Smart Pro display shapes when their firmware and hardware meet the runtime requirements.
+
+If automatic detection is incorrect, create `residual/resolution.txt` containing the actual
+size, for example `720x480`. Use `auto` or remove the file to restore automatic detection.
+
+## Saves and troubleshooting
+
+Back up **`residual/saves/`** before updates.
+Read **`residual/log.txt`** if startup fails. Report your device, exact firmware version,
+resolution and steps to reproduce, and attach the log. Test menu navigation, gameplay,
+audio, game speed, save/reload, suspend/resume and clean exit. Keep purchased game files private.
 
 ## Licenses
 
-The port's original host and support code use the MIT license.
-`LICENSE-residual-host.txt` explicitly covers `residual-host.jar`. The package keeps
-`LICENSE-gptokeyb.txt` for its controller mapper and includes
-the BinaryCounter MIT notice for adapted launcher code within `LICENSE-residual.txt`.
-Residual artwork and the player-supplied game retain their original terms. See the
-files in `residual/licenses/` inside the installed port for component notices.
+The original port and host use the MIT license; their separate notices and the gptokeyb
+GPL license are in `residual/licenses/`. Upstream copyright notices remain intact.
+The game and screenshot retain Orangepixel's rights. Java, Westonpack and the mapper are installed separately by PortMaster.
+
+Interface Zoom in the graphics options now uses distinct normal and enlarged HUD scales. Please test both settings, their persistence after restarting, and the Start shortcuts on your device. Use a disposable save slot when testing deletion.

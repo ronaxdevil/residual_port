@@ -1,0 +1,9 @@
+{
+  "id": "residual",
+  "title": "Residual",
+  "script": "Residual.sh",
+  "zip": "Residual.zip",
+  "game_file": "residual.jar",
+  "mapping": "residual.ini",
+  "runtime_libraries": false
+}

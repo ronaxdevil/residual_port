@@ -9,11 +9,11 @@
   "attr": {
     "title": "Residual",
     "porter": [
-      "Pixelforge Ports (Ronax)"
+      "Pixelforge ports (Ronax)"
     ],
-    "desc": "Explore alien planets, gather resources and repair your ship in this procedurally generated survival platformer by Orangepixel.",
+    "desc": "Explore alien planets, gather resources and repair your ship in a procedurally generated survival platformer.",
     "desc_md": null,
-    "inst": "Install Residual.zip with PortMaster, then copy residual.jar from your GOG Windows 1.4.1 installation into the installed residual folder. On muOS use <SD card>/ports/residual/residual.jar. See the README for the supported checksum and offline-installer instructions. Requires 64-bit ARM firmware; PortMaster provides Java 17 and Westonpack.",
+    "inst": "Install Residual.zip, then copy your owned residual.jar into the installed residual folder. See residual.md for supported files and installation steps. Requires compatible 64-bit ARM firmware and PortMaster Java 17 and Westonpack runtimes.",
     "inst_md": null,
     "genres": [
       "action",

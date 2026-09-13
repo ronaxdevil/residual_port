@@ -69,6 +69,8 @@ def main():
         parser.error('Unsupported game JAR fingerprint')
     suffix = '.exe' if os.name == 'nt' else ''
     javac = args.jdk.resolve()/'bin'/('javac'+suffix)
+    if not javac.is_file():
+        parser.error('JDK compiler not found: ' + str(javac) + '. Use the installed JDK directory, quoted with double quotes on Windows.')
     classes = ROOT/'build/classes'
     classes.mkdir(parents=True, exist_ok=True)
     # Drop stale host bytecode after source files are removed or renamed.
